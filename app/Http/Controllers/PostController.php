@@ -50,7 +50,7 @@ class PostController extends Controller
     public function show(Post $post, $postId)
     {
         return view('post', [
-            'post' => $post->with('user')->withCount(['comments', 'likes'])->findOrFail($postId),
+            'post' => $post->with(['user', 'comments.user'])->withCount(['comments', 'likes'])->findOrFail($postId),
         ]);
     }
 

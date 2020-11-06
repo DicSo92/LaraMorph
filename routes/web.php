@@ -24,3 +24,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/post/{postId}', [App\Http\Controllers\PostController::class, 'show'])->name('post');
 
 Route::post('posts/{post}/like', [App\Http\Controllers\PostController::class, 'like'])->name('posts.like');
+
+Route::post('comments/{comment}/like', [App\Http\Controllers\CommentController::class, 'like'])->name('comments.like');
+

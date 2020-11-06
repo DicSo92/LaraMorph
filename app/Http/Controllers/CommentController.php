@@ -82,4 +82,23 @@ class CommentController extends Controller
     {
         //
     }
+
+    public function like(Request $request, Comment $comment) {
+        $this->middleware('auth');
+
+        if ($comment->isLiked()) {
+            $currentLike = $comment->likes->where('user_id', Auth::id())->first();
+            $currentLike->delete();
+
+            return redirect()->back();
+        } else {
+
+            $comment->likes()->create([
+                'user_id' => $request->user()->id
+            ]);
+
+            return redirect()->back();
+        }
+
+    }
 }

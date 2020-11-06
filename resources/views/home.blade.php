@@ -26,7 +26,7 @@
                             <div class="d-flex flex-column justify-content-end p-4"
                                  style="min-height: 40%;background: rgb(2,0,36);background: linear-gradient(0deg, rgba(2,0,36,0.9528186274509804) 0%, rgba(1,0,18,0.6166841736694677) 55%, rgba(0,0,0,0) 100%);">
                                 <div class="d-flex align-items-center mb-3 pb-2 border-bottom">
-                                    <img src="https://picsum.photos/200" class="rounded-circle mr-3" height="50px" width="50px" alt="avatar">
+                                    <img src="https://picsum.photos/200?random={{rand(1, 11000)}}" class="rounded-circle mr-3" height="50px" width="50px" alt="avatar">
                                     <div class="d-flex flex-column text-white">
                                         <h5 class="mb-0">{{$post->user->name}}</h5>
                                         <p class="mb-0">{{$post->created_at->diffForHumans()}}</p>
@@ -63,7 +63,9 @@
                                     </div>
                                     <div class="col-6 d-flex justify-content-center">
                                         <a href="{{ route('post', ['postId' => $post->id]) }}" class="text-decoration-none text-white">
-                                            <h5 class="font-bold mb-0" style="cursor: pointer;">Commenter</h5>
+                                            <button class="btn text-white d-flex justify-content-center" type="submit">
+                                                <h5 class="font-bold mb-0" style="cursor: pointer;">Commenter</h5>
+                                            </button>
                                         </a>
                                     </div>
                                 </div>
@@ -71,7 +73,6 @@
                         </div>
                     </div>
                 @endforeach
-                {{print_r($posts)}}
 
             </div>
         </div>
