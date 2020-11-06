@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Post extends Model
 {
@@ -22,5 +23,10 @@ class Post extends Model
     public function likes()
     {
         return $this->morphMany('App\Models\Like', 'likable');
+    }
+
+    public function isLiked()
+    {
+        return (bool) $this->likes->where('user_id', Auth::id())->count();
     }
 }

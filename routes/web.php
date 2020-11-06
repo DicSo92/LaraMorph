@@ -20,3 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/post/{postId}', [App\Http\Controllers\PostController::class, 'show'])->name('post');
+
+Route::post('posts/{post}/like', [App\Http\Controllers\PostController::class, 'like'])->name('posts.like');
